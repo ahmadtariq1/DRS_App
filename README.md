@@ -1,74 +1,45 @@
-# Cricket Decision Review System (DRS)
+# Stream Analysis and Display Module
 
-A robust application for cricket Decision Review System (DRS) that processes video footage and overlays ball trajectory and decision data in real-time.
+Processes trajectory data from ball tracking inputs to render real-time overlays for cricket Decision Review System (DRS).
 
 ## Features
 
-- Real-time ball trajectory tracking and visualization
+- Real-time ball trajectory visualization
+- Distinct rendering for actual and predicted paths
 - Decision indicators (OUT/NOT OUT) with confidence metrics
-- Support for multiple wicket types (LBW, caught, run-out)
-- 3D to 2D coordinate mapping for accurate overlay positioning
-- Modular animation components for different ball trajectory phases
+- Support for multiple wicket types (LBW, caught)
 - Custom graphics support via file path configuration
-- High-performance rendering (≤200ms latency, ≥30fps)
 
-## System Requirements
+## Input Schema
 
-- Python 3.8+
-- OpenCV
-- NumPy
-- Matplotlib
-- JSON
+Receives trajectory analysis data:
 
-## Quick Start
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-organization/drs-app.git
-   cd drs-app
-   ```
-
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Run basic overlay example:
-   ```bash
-   python -m drs.main input_cricket_video.mp4 trajectory_data.json output_drs_video.mp4
-   ```
-
-## Module Structure
-
-- `overlay_module.py` - Core rendering and trajectory visualization
-- `decision_modules/` - Wicket-specific decision logic (LBW, caught, run-out)
-- `animation/` - Animation components for different ball phases
-- `utils/` - Coordinate mapping and utility functions
-- `calibration/` - Camera calibration tools
-
-## Configuration
-
-Sample trajectory data format:
 ```json
 {
-  "label": "OUT",
-  "confidence": 0.97,
-  "impact_point": { "x": 7.77, "y": 2.16, "z": 0.38, "speed": 125.6 },
-  "predicted_trajectory": [
-    { "x": 5.44, "y": 1.63, "z": 0.5, "t": 0.68 },
-    ...
-  ]
+  "predicted_path": [
+    {"x": 2.0, "y": 0.8, "z": 0.3, "t": 0.1},
+    {"x": 1.8, "y": 0.6, "z": 0.2, "t": 0.1}
+  ],
+  "impact_location": {"x": 1.6, "y": 0.4, "z": 0.1},
+  "bounce_point": {"x": 2.2, "y": 1.0, "z": 0.0},
 }
 ```
 
-## Integration
+## Output
 
-The system provides interfaces for integration with video feeds and analysis modules. See `docs/integration.md` for details on connecting with other cricket analysis systems.
+Produces video with overlaid graphics showing:
+- Color-coded trajectory segments (pre/post-bounce)
+- Semi-transparent predicted path
+- Impact point markers
+- Decision indicators with confidence percentages
 
-## Development
+## Core Components
 
-Contributors should follow the development workflow described in `CONTRIBUTING.md`. Each module has specific test cases located in the `tests/` directory.
+- **Interface Layer** - Standardized APIs for module integration
+- **Decision Modules** - Separate logic for each wicket type
+- **Animation Components** - Modular rendering for different ball phases
+- **Coordinate Mapper** - 3D world to 2D video frame conversion
+- **Graphics Engine** - Customizable overlay rendering system
 
-## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+
