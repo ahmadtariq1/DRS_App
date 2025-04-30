@@ -182,10 +182,7 @@ class CricketDRSOverlay:
 
         # Review info
         review_y = self.height - 60
-        cv2.putText(frame, f"{self.reviewing_team} REVIEW", (margin, review_y),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.7, self.COLORS["text"], 2)
-        cv2.putText(frame, f"ORIGINAL DECISION - {self.decision}", (margin, review_y + 30),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.7, box_color, 2)
+
 
         return frame
 
