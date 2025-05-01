@@ -1,19 +1,19 @@
 {
   "label": "OUT",
   "confidence": 0.97,
+  "decision_elements": {
+    "wickets": "HITTING",
+    "impact": "IN-LINE",
+    "pitching": "OUTSIDE OFF"
+
+  },
   "impact_point": {
     "x": 7.77,
     "y": 2.16,
     "z": 0.38,
-    "speed": 125.6,
-    "spin_axis": [
-      0.2,
-      0.1,
-      0.9
-    ],
-    "surface": "grass"
+    "speed": 125.6
   },
-  "predicted_trajectory": [
+   "predicted_trajectory": [
     {
       "x": 5.44,
       "y": 1.63,
@@ -35,6 +35,12 @@
     {
       "x": 7.77,
       "y": 2.16,
+      "z": 0.38,
+      "t": 1.12
+    },
+     {
+      "x": 9.439,
+      "y": 2.66,
       "z": 0.38,
       "t": 1.12
     }
