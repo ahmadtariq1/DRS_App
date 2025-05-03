@@ -16,13 +16,44 @@ Receives trajectory analysis data:
 
 ```json
 {
-  "predicted_path": [
-    {"x": 2.0, "y": 0.8, "z": 0.3, "t": 0.1},
-    {"x": 1.8, "y": 0.6, "z": 0.2, "t": 0.1}
+  "label": "OUT",
+  "confidence": 0.97,
+  "decision_elements": {
+    "wickets": "HITTING",
+    "impact": "IN-LINE",
+    "pitching": "OUTSIDE OFF"
+
+  },
+  "impact_point": {
+    "x": 7.77,
+    "y": 2.16,
+    "z": 0.38,
+    "speed": 125.6
+  },
+   "predicted_trajectory": [
+    {
+      "x": 5.44,
+      "y": 1.63,
+      "z": 0.5,
+      "t": 0.68
+    }, ...
   ],
-  "impact_location": {"x": 1.6, "y": 0.4, "z": 0.1},
-  "bounce_point": {"x": 2.2, "y": 1.0, "z": 0.0},
+  "bat_coordinates": [
+    {
+      "x": 1.75,
+      "y": 0.65,
+      "z": 0.5
+    }, ...
+  ],
+  "stump_coordinates": [
+    {
+      "x": 2.3,
+      "y": 0.1,
+      "z": 0.1
+    }, ...
+  ]
 }
+
 ```
 
 ## Output
