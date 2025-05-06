@@ -10,8 +10,7 @@ input:
   "swing_type": "inswing"
 }
 
-
-output:
+output format:
 
 {
   "decision_reason": "Ball projected to hit the stumps (100.0% overlap) no significant swing",
