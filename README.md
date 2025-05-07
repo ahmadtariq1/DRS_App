@@ -1,11 +1,11 @@
 # Group Members
 
-Mujtaba Ahmed
-Ahmad Abdul Rehman
-Hassaan Raza
-Burhan Bhatti
-Ibrahim Sohail
-M.Fahad
+- Mujtaba Ahmed
+- Ahmad Abdul Rehman
+- Hassaan Raza
+- Burhan Bhatti
+- Ibrahim Sohail
+- M.Fahad
 
 # Stream Analysis and Display Module
 
