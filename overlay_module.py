@@ -249,7 +249,7 @@ def process_from_json_file(video_path, json_path, output_path=None):
     drs = CricketDRSOverlay(video_path, trajectory_data, output_path)
     return drs.process_video()
 
-
+////this is used for just sample . now we are implementing fetching
 if __name__ == "__main__":
     # Example usage with hardcoded paths
     process_from_json_file("input_cricket_video.mp4", "trajectory_data.json", "output_drs_video.mp4")
