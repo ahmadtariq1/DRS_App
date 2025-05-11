@@ -87,34 +87,35 @@ def fetch_module_data():
 
 
 def merge_module_data():
-    """Merge data from all module files into a single trajectory data file"""
-    # In a real implementation, this would combine data from multiple modules
-    # For now, we'll just use the default trajectory data
+    """Combine all module data files into one without special formatting"""
+    merged_data = {}
     
-    # This is a placeholder for the actual merging logic
-    # In a real scenario, you would read from each module's output file
-    # and combine them according to your data model
-    
-    logger.info("Using default trajectory data as other modules' APIs are not available")
-    
-    # For demonstration purposes, just make a copy of the default data
-    try:
-        with open(DEFAULT_TRAJECTORY_DATA, 'r') as src:
-            data = json.load(src)
+    for module in MODULE_CONFIGS:
+        if not module["enabled"]:
+            continue
             
-        # You could process/merge data here
-        
-        # Save to a merged file
-        merged_file = "merged_trajectory_data.json"
-        with open(merged_file, 'w') as dest:
-            json.dump(data, dest, indent=4)
-            
-        logger.info(f"Merged data saved to {merged_file}")
+        output_file = module["output_file"]
+        if os.path.exists(output_file):
+            try:
+                with open(output_file, 'r') as f:
+                    module_data = json.load(f)
+                    # Use module name as key in merged data
+                    merged_data[module["name"]] = module_data
+            except Exception as e:
+                logger.error(f"Error reading {output_file}: {str(e)}")
+                continue
+    
+    # If we got data from any module, save it
+    if merged_data:
+        merged_file = "merged_data.json"
+        with open(merged_file, 'w') as f:
+            json.dump(merged_data, f)
+        logger.info(f"Combined data saved to {merged_file}")
         return merged_file
     
-    except Exception as e:
-        logger.error(f"Error merging data: {str(e)}")
-        return DEFAULT_TRAJECTORY_DATA
+    # Fall back to default if no modules provided data
+    logger.info("No module data available, using default trajectory data")
+    return DEFAULT_TRAJECTORY_DATA
 
 
 # API Routes
